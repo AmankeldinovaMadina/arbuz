@@ -14,35 +14,46 @@ struct ContentView: View {
 
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(product) { product in
-                    VStack(alignment: .leading) {
-                        // Display the image
-                        Image(product.image ?? "")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 100, height: 100)
-                        
-                        Text(product.name ?? "Unknown Product")
-                            .font(.headline)
-                        Text(product.productDescription ?? "No Description")
-                            .font(.subheadline)
-                        Text("Cost: \(String(describing: product.cost))")
-                            .font(.subheadline)
-                        Text("Category: \(product.category ?? "No Category")")
-                            .font(.subheadline)
-                    }
-                    .padding()
-                }
-            }
-            .navigationTitle("Products")
-            .onAppear {
-                addInitialProducts(context: managedObjectContext)
-            }
-        }
+//        NavigationView {
+//            List {
+//                ForEach(product) { product in
+//                    VStack(alignment: .leading) {
+//                        // Display the image
+//                        Image(product.image ?? "")
+//                            .resizable()
+//                            .aspectRatio(contentMode: .fit)
+//                            .frame(width: 100, height: 100)
+//                        
+//                        Text(product.name ?? "Unknown Product")
+//                            .font(.headline)
+//                        Text(product.productDescription ?? "")
+//                            .font(.subheadline)
+//                        Text("Cost: \(String(describing: product.cost))")
+//                            .font(.subheadline)
+//                        Text("Category: \(product.category ?? "No Category")")
+//                            .font(.subheadline)
+//                    }
+//                    .padding()
+//                }
+//            }
+//            .navigationTitle("Products")
+//            .onAppear {
+//                loadInitialDataIfNeeded(context: managedObjectContext)
+//            }
+//        }
+        
+        MainView()
     }
     
+    func loadInitialDataIfNeeded(context: NSManagedObjectContext) {
+        let userDefaults = UserDefaults.standard
+        let dataLoaded = "initialDataLoaded"
+        
+        if !userDefaults.bool(forKey: dataLoaded) {
+            addInitialProducts(context: managedObjectContext)
+            userDefaults.set(true, forKey: dataLoaded)
+        }
+    }
     
     func addInitialProducts(context: NSManagedObjectContext) {
             // Drinks
