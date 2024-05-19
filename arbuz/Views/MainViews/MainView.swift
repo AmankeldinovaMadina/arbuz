@@ -8,32 +8,39 @@
 import SwiftUI
 
 struct MainView: View {
-    @Environment(\.managedObjectContext) var managedObjectContext
-    @FetchRequest(
-        sortDescriptors: [],
-        predicate: NSPredicate(format: "category == %@", "drinks")
-    ) var product: FetchedResults<Product>
-    
-    let columns = Array(repeating: GridItem(.flexible()), count: 2)
+    @StateObject var mainVM = MainViewModel.shared
     
     var body: some View {
-        NavigationView {
-           Text("")
+        ZStack {
             ScrollView {
-                HStack {
-                    Text("Drinks")
-                        .padding(.leading)
-                        .font(.system(size: 20, weight: .bold))
-                    Spacer()
-                }
-                LazyVGrid(columns: columns) {
-                    ForEach(product) { product in
-                        ProductCellView(product: product)
+                VStack(spacing: 16){
+                    Image("arbuz_logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120)
+                        .padding(.bottom)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text("Алматы, сегодня 17:00 - 19:00")
+                                .font(.system(size: 12))
+                            Text("улица Макатаева, 127/1 проспект...")
+                                .font(.system(size: 14, weight: .semibold))
+                        }
+                        
+                        Spacer()
+                        Image(systemName: "arrow.down")
+                            .padding(.trailing)
+                        Image(systemName: "bell")
                     }
+                    SearchTextFieldView(text: $mainVM.searchTxt)
+                    Image("banner")
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(12)
                 }
-                .padding()
+                .padding(.horizontal)
+                
             }
-            
         }
     }
 }
