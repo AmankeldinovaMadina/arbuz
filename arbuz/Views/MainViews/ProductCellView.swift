@@ -20,18 +20,19 @@ struct ProductCellView: View {
             
             Text(product.productDescription ?? "Unknown Product")
                 .padding(.top, 5)
+                .font(.system(size: 12))
                 .lineLimit(2)
                 .truncationMode(.tail)
             HStack {
                 Text("\(Int(truncating: product.cost ?? 0)) \(product.category == "drinks" ? "тг/шт" : "тг/кг") ")
-                    .font(.subheadline)
+                    .font(.system(size: 12, weight: .semibold))
                     .foregroundColor(Color.gray)
                 Spacer()
             }
             AddButton(cost: Int(truncating: product.cost ?? 0))
 
         }
-        .padding()
+//        .padding()
     }
 }
 
@@ -42,17 +43,18 @@ struct AddButton: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(red: 0.8, green: 0.8, blue: 0.8))
+                .fill(Color(red: 0.9, green: 0.9, blue: 0.9))
+                .frame(height: 30)
             HStack {
                 Text("\(cost) тг ")
-                    .font(.headline)
+                    .font(.system(size: 14, weight: .bold))
                     .padding(.leading)
                 Spacer()
                 Button(action: {
                     
                 }, label: {
                     Text("+")
-                        .font(Font.system(size: 25).weight(.semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(Color.green)
                         .padding(.trailing)
                 })

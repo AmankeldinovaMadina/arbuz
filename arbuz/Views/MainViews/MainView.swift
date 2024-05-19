@@ -37,6 +37,10 @@ struct MainView: View {
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(12)
+                    
+                    StaticGridView()
+                    HStackView()
+
                 }
                 .padding(.horizontal)
                 
