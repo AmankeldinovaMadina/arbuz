@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HStackView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
+    var title: String
+    var category: Category
     @FetchRequest(
         sortDescriptors: [],
         predicate: NSPredicate(format: "category == %@", "drinks")
@@ -37,5 +39,5 @@ struct HStackView: View {
 }
 
 #Preview {
-    HStackView()
+    HStackView(title: "Temp", category: Category.drinks)
 }

@@ -37,3 +37,11 @@ class DataController: ObservableObject {
     }
     
 }
+
+
+enum Category: String, CaseIterable {
+    case drinks = "drinks"
+    case fruits = "fruits"
+    case vegetables = "vegetables"
+    case breadAndPastries = "bread & pastries"
+}

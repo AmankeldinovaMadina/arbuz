@@ -17,7 +17,7 @@ struct MainTabView: View {
             TabView(selection: $mainVM.selectedTab) {
                 MainView().tag(0)
                     .environment(\.managedObjectContext, managedObjectContext)
-                BasketView().tag(1)
+                BasketView(isAdded: false).tag(1)
                 FavouriteView().tag(2)
             }
             .onAppear {

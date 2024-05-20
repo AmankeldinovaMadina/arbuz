@@ -10,6 +10,8 @@ import SwiftUI
 struct ProductCellView: View {
     var product: Product
     
+    @StateObject var detailVM: ProductDetailViewModel = ProductDetailViewModel()
+    
     var body: some View {
         VStack {
             Image(product.image ?? "")
@@ -24,42 +26,70 @@ struct ProductCellView: View {
                 .lineLimit(2)
                 .truncationMode(.tail)
             HStack {
-                Text("\(Int(truncating: product.cost ?? 0)) \(product.category == "drinks" ? "тг/шт" : "тг/кг") ")
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundColor(Color.gray)
+                if detailVM.quantity > 1 {
+                    let totalCost = product.cost?.multiplying(by: NSDecimalNumber(value: detailVM.quantity)) ?? 0
+                    Text("\(totalCost) тг")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(Color.gray)
+                } else {
+                    Text("\(Int(truncating: product.cost ?? 0)) \(product.category == "drinks" ? "тг/шт" : "тг/кг")")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(Color.gray)
+                }
                 Spacer()
             }
-            AddButton(cost: Int(truncating: product.cost ?? 0))
-
+            AddButton(cost: Int(truncating: product.cost ?? 0), category: product.category ?? "", detailVM: detailVM)
         }
-//        .padding()
     }
 }
 
-
 struct AddButton: View {
     var cost: Int
+    var category: String
+    @StateObject var detailVM: ProductDetailViewModel
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color(red: 0.9, green: 0.9, blue: 0.9))
+                .fill(detailVM.quantity == 0 ? Color(red: 0.9, green: 0.9, blue: 0.9) : Color.green)
                 .frame(height: 30)
             HStack {
-                Text("\(cost) тг ")
-                    .font(.system(size: 14, weight: .bold))
-                    .padding(.leading)
-                Spacer()
-                Button(action: {
-                    
-                }, label: {
-                    Text("+")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color.green)
-                        .padding(.trailing)
-                })
+                if detailVM.quantity == 0 {
+                    Text("\(cost) тг")
+                        .font(.system(size: 14, weight: .bold))
+                        .padding(.leading)
+                    Spacer()
+                    Button(action: {
+                        detailVM.addQuantity(isAdd: true)
+                    }, label: {
+                        Text("+")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color.green)
+                            .padding(.trailing)
+                    })
+                } else {
+                    Button(action: {
+                        detailVM.addQuantity(isAdd: false)
+                    }, label: {
+                        Text("-")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color.white)
+                            .padding(.leading)
+                    })
+                    Text("\(Int(detailVM.quantity)) \(category == "drinks" ? "шт" : "кг")")
+                        .font(.system(size: 14, weight: .bold))
+                        .padding(.horizontal)
+                    Button(action: {
+                        detailVM.addQuantity(isAdd: true)
+                    }, label: {
+                        Text("+")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(Color.white)
+                            .padding(.trailing)
+                    })
+                }
             }
         }
-        
     }
 }
+

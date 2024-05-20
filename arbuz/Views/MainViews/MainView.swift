@@ -39,7 +39,7 @@ struct MainView: View {
                         .cornerRadius(12)
                     
                     StaticGridView()
-                    HStackView()
+                    HStackView(title: "Drinks", category: Category.drinks)
 
                 }
                 .padding(.horizontal)
