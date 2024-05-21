@@ -10,25 +10,37 @@ import SwiftUI
 struct BasketView: View {
     @EnvironmentObject var basketVM: BasketViewModel
     @EnvironmentObject var favoriteVM: FavouriteViewModel
+    @StateObject var detailVM: ProductDetailViewModel
     
     var body: some View {
-        if(basketVM.products.count > 0) {
-            BasketWithItemsView()
-        } else {
-            ZStack {
-                VStack(alignment: .center){
-                    HStack{
-                        Text("Корзина")
-                            .font(.system(size: 16, weight: .semibold))
-                            .padding(.top)
-                        Text("")
+        Group {
+            if basketVM.products.count > 0 {
+                BasketWithItemsView(detailVM: detailVM)
+                    .alwaysVisibleFooter(footer: BuyButtonView())
+            } else {
+                ZStack {
+                    VStack(alignment: .center) {
+                        HStack {
+                            Text("Корзина")
+                                .font(.system(size: 16, weight: .semibold))
+                                .padding(.top)
+                            Text("")
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    
+                    EmptyBasketView()
                 }
-                
-                EmptyBasketView()
             }
         }
+        .alwaysVisibleFooter(footer: EmptyView())
     }
 }
 
+struct EmptyView: View {
+    var body: some View {
+        HStack {
+            Text("")
+        }
+    }
+}

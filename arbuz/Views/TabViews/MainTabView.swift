@@ -11,6 +11,7 @@ struct MainTabView: View {
     @StateObject var mainVM = MainViewModel.shared
     @Environment(\.managedObjectContext) var managedObjectContext
     @StateObject var basketVM = BasketViewModel()
+    @StateObject var detailVM = ProductDetailViewModel()
     @EnvironmentObject var favoriteVM: FavouriteViewModel
     @FetchRequest(sortDescriptors: []) var product: FetchedResults<Product>
     
@@ -22,7 +23,7 @@ struct MainTabView: View {
                     .environment(\.managedObjectContext, managedObjectContext)
                     .environmentObject(basketVM)
                     .environmentObject(favoriteVM)
-                BasketView()
+                BasketView(detailVM: detailVM)
                     .tag(1)
                     .environmentObject(basketVM)
                     .environmentObject(favoriteVM)

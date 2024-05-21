@@ -14,11 +14,7 @@ struct BasketCellView: View {
     @StateObject var detailVM: ProductDetailViewModel
     @EnvironmentObject var favoriteVM: FavouriteViewModel
     
-    init(product: Product) {
-        self.product = product
-        _detailVM = StateObject(wrappedValue: ProductDetailViewModel())
-    }
-    
+ 
     var body: some View {
         HStack {
             ZStack (alignment: .topTrailing) {
@@ -45,7 +41,7 @@ struct BasketCellView: View {
                 
                 Spacer()
                 
-                BasketAddButton(cost: Int(truncating: product.cost ?? 0), category: product.category ?? "", detailVM: detailVM)
+                BasketAddButton(cost: Int(truncating: product.cost ?? 0), category: product.category ?? "" , product: product, detailVM: detailVM)
                     .onAppear {
                         detailVM.basketVM = basketVM
                         detailVM.product = product
@@ -63,8 +59,8 @@ struct BasketCellView: View {
                 
                 Spacer()
                 
-                if detailVM.quantity > 1 {
-                    let totalCost = product.cost?.multiplying(by: NSDecimalNumber(value: detailVM.quantity)) ?? 0
+                if basketVM.products[product] ?? 0 > 0 {
+                    let totalCost = product.cost?.multiplying(by: NSDecimalNumber(value: basketVM.products[product] ?? 0)) ?? 0
                     Text("\(totalCost) тг")
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(Color.gray)
@@ -82,28 +78,18 @@ struct BasketCellView: View {
 struct BasketAddButton: View {
     var cost: Int
     var category: String
+    var product: Product
+    
+    @EnvironmentObject var basketVM: BasketViewModel
     @StateObject var detailVM: ProductDetailViewModel
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .fill(detailVM.quantity == 0 ? Color(red: 0.9, green: 0.9, blue: 0.9) : Color.green)
+                .fill(basketVM.products[product] == 0 ? Color(red: 0.9, green: 0.9, blue: 0.9) : Color.green)
                 .frame(height: 30)
             HStack {
-                if detailVM.quantity == 0 {
-                    Text("\(cost) тг")
-                        .font(.system(size: 14, weight: .bold))
-                        .padding(.leading)
-                    Spacer()
-                    Button(action: {
-                        detailVM.addQuantity(isAdd: true)
-                    }, label: {
-                        Text("+")
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(Color.green)
-                            .padding(.trailing)
-                    })
-                } else {
                     Button(action: {
                         detailVM.addQuantity(isAdd: false)
                     }, label: {
@@ -112,7 +98,7 @@ struct BasketAddButton: View {
                             .foregroundColor(Color.white)
                             .padding(.leading)
                     })
-                    Text("\(Int(detailVM.quantity)) \(category == "drinks" ? "шт" : "кг")")
+                    Text("\(Int(basketVM.products[product] ?? 0)) \(category == "drinks" ? "шт" : "кг")")
                         .font(.system(size: 14, weight: .bold))
                         .padding(.horizontal)
                     Button(action: {
@@ -123,7 +109,7 @@ struct BasketAddButton: View {
                             .foregroundColor(Color.white)
                             .padding(.trailing)
                     })
-                }
+                
             }
         }
     }

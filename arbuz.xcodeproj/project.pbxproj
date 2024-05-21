@@ -31,6 +31,8 @@
 		4FE675C72BFCFA63009DE761 /* BasketCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675C62BFCFA63009DE761 /* BasketCellView.swift */; };
 		4FE675C92BFD1A12009DE761 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675C82BFD1A12009DE761 /* FavouriteViewModel.swift */; };
 		4FE675CB2BFD3A5F009DE761 /* ProductBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675CA2BFD3A5F009DE761 /* ProductBottomSheet.swift */; };
+		4FE675CD2BFD4FF1009DE761 /* BuyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675CC2BFD4FF1009DE761 /* BuyButtonView.swift */; };
+		4FE675CF2BFD531D009DE761 /* AlwaysVisibleFooterModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675CE2BFD531D009DE761 /* AlwaysVisibleFooterModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		4FE675C62BFCFA63009DE761 /* BasketCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCellView.swift; sourceTree = "<group>"; };
 		4FE675C82BFD1A12009DE761 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
 		4FE675CA2BFD3A5F009DE761 /* ProductBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBottomSheet.swift; sourceTree = "<group>"; };
+		4FE675CC2BFD4FF1009DE761 /* BuyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonView.swift; sourceTree = "<group>"; };
+		4FE675CE2BFD531D009DE761 /* AlwaysVisibleFooterModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysVisibleFooterModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,8 @@
 				4F5B268C2BFB8D3400B140F8 /* EmptyBasketView.swift */,
 				4F5B268E2BFB8D6500B140F8 /* BasketWithItemsView.swift */,
 				4FE675C62BFCFA63009DE761 /* BasketCellView.swift */,
+				4FE675CC2BFD4FF1009DE761 /* BuyButtonView.swift */,
+				4FE675CE2BFD531D009DE761 /* AlwaysVisibleFooterModifier.swift */,
 			);
 			path = BasketViews;
 			sourceTree = "<group>";
@@ -254,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FE675C72BFCFA63009DE761 /* BasketCellView.swift in Sources */,
+				4FE675CD2BFD4FF1009DE761 /* BuyButtonView.swift in Sources */,
 				4F5B267D2BF9CC6000B140F8 /* BasketView.swift in Sources */,
 				4F5B268F2BFB8D6500B140F8 /* BasketWithItemsView.swift in Sources */,
 				4F5B26772BF9CA0300B140F8 /* MainViewModel.swift in Sources */,
@@ -271,6 +278,7 @@
 				4F5B26892BFA279300B140F8 /* HStackView.swift in Sources */,
 				4F55B7692BF77FDF00466165 /* ProductModel.xcdatamodeld in Sources */,
 				4F5B26812BF9D21A00B140F8 /* TabButton.swift in Sources */,
+				4FE675CF2BFD531D009DE761 /* AlwaysVisibleFooterModifier.swift in Sources */,
 				4F71B3812BF9008E00062570 /* MainView.swift in Sources */,
 				4F55B75D2BF77FDD00466165 /* arbuzApp.swift in Sources */,
 				4FE675CB2BFD3A5F009DE761 /* ProductBottomSheet.swift in Sources */,
