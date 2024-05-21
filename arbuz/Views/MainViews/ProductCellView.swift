@@ -14,6 +14,8 @@ struct ProductCellView: View {
     @StateObject var detailVM: ProductDetailViewModel
     @EnvironmentObject var favoriteVM: FavouriteViewModel
     
+    @State private var isBottomSheetPresented = false
+    
     init(product: Product) {
         self.product = product
         _detailVM = StateObject(wrappedValue: ProductDetailViewModel())
@@ -34,8 +36,6 @@ struct ProductCellView: View {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .foregroundColor(Color.black)
                 })
-
-                
             }
             Text(product.productDescription ?? "Unknown Product")
                 .padding(.top, 5)
@@ -60,6 +60,13 @@ struct ProductCellView: View {
                     detailVM.basketVM = basketVM
                     detailVM.product = product
                 }
+                .padding(.bottom, 10)
+        }
+        .onTapGesture {
+            isBottomSheetPresented.toggle()
+        }
+        .sheet(isPresented: $isBottomSheetPresented) {
+            ProductBottomSheet(product: product, isPresented: $isBottomSheetPresented)
         }
     }
 }
