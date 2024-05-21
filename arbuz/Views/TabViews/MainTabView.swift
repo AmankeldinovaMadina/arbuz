@@ -46,7 +46,7 @@ struct MainTabView: View {
                     }
                 }
                 
-                TabButton(title: "Корзина", icon: "basket", isSelected: .constant(mainVM.selectedTab == 1)) {
+                TabButton(title: "Корзина", icon: "basket", isSelected: .constant(mainVM.selectedTab == 1), badgeCnt: basketVM.products.count) {
                     withAnimation {
                         mainVM.selectedTab = 1
                     }

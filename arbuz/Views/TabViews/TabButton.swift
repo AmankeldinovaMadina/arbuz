@@ -11,26 +11,38 @@ struct TabButton: View {
     let icon: String
     @Binding var isSelected: Bool
     var didSelect: () -> Void
+    var badgeCnt: Int?
     
     var body: some View {
-        Button {
-            debugPrint("Tab button tapped: \(title)")
-            didSelect()
-        } label: {
-            VStack {
-                Image(systemName: icon)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 25, height: 25)
+        Button(action: didSelect) {
+            VStack(spacing: 4) {
+                ZStack(alignment: .topTrailing) {
+                    Image(systemName: icon)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                        .foregroundColor(isSelected ? Color.green : Color.black)
                     
+                    if let badgeCnt = badgeCnt, badgeCnt > 0 {
+                        Text("\(badgeCnt)")
+                            .font(.system(size: 10))
+                            .foregroundColor(.white)
+                            .padding(4)
+                            .background(Color.red)
+                            .clipShape(Circle())
+                            .offset(x: 6, y: -6)
+                    }
+                }
+                
                 Text(title)
                     .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(isSelected ? Color.green : Color.black)
             }
-            .foregroundColor(isSelected ? Color.green : Color.black)
             .frame(minWidth: 0, maxWidth: .infinity)
         }
     }
 }
+
 
 #Preview {
     @State var isSelected = true
