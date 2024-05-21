@@ -125,7 +125,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Свежие красные яблоки, сочные и сладкие. Идеальны для перекуса или приготовления десертов.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Banana",
@@ -134,7 +135,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Спелые бананы, богатые калием и витаминами. Прекрасный выбор для быстрого перекуса или добавления в смузи.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Orange",
@@ -143,7 +145,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Сочные апельсины с ярким вкусом и ароматом. Отличный источник витамина С для поддержания иммунитета.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.7
         )
         DataController().addProduct(
             name: "Grapes",
@@ -152,7 +155,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Виноград без косточек, сладкий и сочный. Подходит для перекуса, добавления в салаты и десерты.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.8
         )
         DataController().addProduct(
             name: "Kiwi",
@@ -161,7 +165,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Свежие киви с нежной мякотью и ярким вкусом. Богат витамином С и антиоксидантами, полезен для здоровья.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Pineapple",
@@ -170,7 +175,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Свежий ананас, сочный и сладкий. Отличный выбор для перекуса или приготовления экзотических блюд.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.9
         )
         DataController().addProduct(
             name: "Mango",
@@ -179,7 +185,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Сладкий манго с нежной мякотью и ярким ароматом. Прекрасный источник витаминов и минералов для вашего здоровья.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.8
         )
         DataController().addProduct(
             name: "Strawberry",
@@ -188,7 +195,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Свежая клубника с насыщенным вкусом и ароматом. Идеальна для десертов, смузи и здоровых перекусов.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Watermelon",
@@ -197,7 +205,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Спелый арбуз, сочный и сладкий. Прекрасный выбор для летнего перекуса и утоления жажды.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.7
         )
         DataController().addProduct(
             name: "Peach",
@@ -206,7 +215,8 @@ struct ContentView: View {
             category: "fruits",
             productDescription: "Сочные персики с нежной мякотью и сладким вкусом. Идеальны для перекуса или добавления в десерты и выпечку.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
 
         // Vegetables
@@ -217,7 +227,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Свежая морковь, хрустящая и сладкая. Богата витаминами и минералами, полезна для зрения и иммунитета.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Tomato",
@@ -226,7 +237,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Спелые помидоры с насыщенным вкусом и ароматом. Прекрасный выбор для салатов, соусов и закусок.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Cucumber",
@@ -235,7 +247,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Хрустящие огурцы, освежающие и полезные. Идеальны для салатов и здорового перекуса.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Bell Pepper",
@@ -244,7 +257,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Сладкий болгарский перец с ярким цветом и вкусом. Богат витаминами и антиоксидантами, полезен для здоровья.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.8
         )
         DataController().addProduct(
             name: "Broccoli",
@@ -253,7 +267,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Свежий брокколи, богатый витаминами и минералами. Прекрасный выбор для здорового питания и поддержания иммунитета.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.7
         )
         DataController().addProduct(
             name: "Spinach",
@@ -262,7 +277,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Листья шпината, нежные и полезные. Богаты железом и витаминами, идеальны для салатов и смузи.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.66
         )
         DataController().addProduct(
             name: "Lettuce",
@@ -271,7 +287,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Салатный лист, свежий и хрустящий. Отличный выбор для салатов, сэндвичей и здоровых блюд.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.4
         )
         DataController().addProduct(
             name: "Potato",
@@ -280,7 +297,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Картофель, универсальный и вкусный. Идеален для различных блюд, от пюре до запеканок.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.7
         )
         DataController().addProduct(
             name: "Onion",
@@ -289,7 +307,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Лук репчатый, с насыщенным вкусом и ароматом. Используется в кулинарии для придания блюдам глубины вкуса.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Garlic",
@@ -298,7 +317,8 @@ struct ContentView: View {
             category: "vegetables",
             productDescription: "Чеснок, ароматный и острый. Широко используется в кулинарии и обладает многочисленными полезными свойствами.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.3
         )
 
         // Bread & Pastries
@@ -354,7 +374,8 @@ struct ContentView: View {
             category: "bread & pastries",
             productDescription: "Ванильное печенье с нежным вкусом и ароматом. Идеально подходит для чая или кофе.",
             context: managedObjectContext,
-            isFav: false
+            isFav: false,
+            minAmount: 0.6
         )
         DataController().addProduct(
             name: "Bagel",

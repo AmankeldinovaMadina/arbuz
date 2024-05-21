@@ -25,6 +25,9 @@ class BasketViewModel: ObservableObject {
             products[product] = nil
         }
     }
+    func clearBasket() {
+            products.removeAll()
+        }
     
     var totalCost: NSDecimalNumber {
         products.reduce(NSDecimalNumber.zero) { total, item in

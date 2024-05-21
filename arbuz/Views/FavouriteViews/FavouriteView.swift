@@ -19,7 +19,7 @@ struct FavouriteView: View {
             ScrollView {
                 VStack(alignment: .center){
                     HStack{
-                        Text("Корзина")
+                        Text("Избранное")
                             .font(.system(size: 16, weight: .semibold))
                             .padding(.top)
 

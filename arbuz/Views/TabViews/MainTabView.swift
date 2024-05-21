@@ -53,7 +53,7 @@ struct MainTabView: View {
                     }
                 }
                 
-                TabButton(title: "Избранная", icon: "heart", isSelected: .constant(mainVM.selectedTab == 2)) {
+                TabButton(title: "Избранное", icon: "heart", isSelected: .constant(mainVM.selectedTab == 2)) {
                     withAnimation {
                         mainVM.selectedTab = 2
                     }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BuyButtonView: View {
     @EnvironmentObject var basketVM: BasketViewModel
+    @State private var isLoading = false
+    @State private var isThanksViewVisible = false
     
     var totalSum: Decimal {
         basketVM.products.reduce(into: Decimal(0)) { sum, item in
@@ -20,7 +22,16 @@ struct BuyButtonView: View {
     
     var body: some View {
         Button(action: {
-            // Action for the button
+            isLoading = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                isLoading = false
+                isThanksViewVisible = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                basketVM.clearBasket()
+                
+            }
+            
         }, label: {
             ZStack {
                 Rectangle()
@@ -34,8 +45,29 @@ struct BuyButtonView: View {
             }
         })
         .padding(.trailing)
+        .sheet(isPresented: $isThanksViewVisible) {
+            ThanksView()
+        }
+        .overlay(
+            Group {
+                if isLoading {
+                    Color.white.opacity(0.5)
+                        .edgesIgnoringSafeArea(.all)
+                        .overlay(ProgressView())
+                }
+            }
+        )
     }
 }
-
-
-
+struct ThanksView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("Спасибо за покупку!")
+                .font(.system(size: 45, weight: .semibold))
+                .foregroundColor(.green)
+                .padding()
+            Spacer()
+        }
+    }
+}
