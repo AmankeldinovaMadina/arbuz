@@ -10,15 +10,22 @@ import SwiftUI
 struct MainTabView: View {
     @StateObject var mainVM = MainViewModel.shared
     @Environment(\.managedObjectContext) var managedObjectContext
+    @StateObject var basketVM = BasketViewModel()
     @FetchRequest(sortDescriptors: []) var product: FetchedResults<Product>
     
     var body: some View {
         VStack {
             TabView(selection: $mainVM.selectedTab) {
-                MainView().tag(0)
+                MainView()
+                    .tag(0)
                     .environment(\.managedObjectContext, managedObjectContext)
-                BasketView(isAdded: false).tag(1)
-                FavouriteView().tag(2)
+                    .environmentObject(basketVM)
+                BasketView()
+                    .tag(1)
+                    .environmentObject(basketVM)
+                FavouriteView()
+                    .tag(2)
+                    .environmentObject(basketVM) 
             }
             .onAppear {
                 UIScrollView.appearance().isScrollEnabled = false

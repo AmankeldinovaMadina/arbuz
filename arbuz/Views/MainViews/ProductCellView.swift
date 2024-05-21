@@ -10,7 +10,13 @@ import SwiftUI
 struct ProductCellView: View {
     var product: Product
     
-    @StateObject var detailVM: ProductDetailViewModel = ProductDetailViewModel()
+    @EnvironmentObject var basketVM: BasketViewModel
+    @StateObject var detailVM: ProductDetailViewModel
+    
+    init(product: Product) {
+        self.product = product
+        _detailVM = StateObject(wrappedValue: ProductDetailViewModel())
+    }
     
     var body: some View {
         VStack {
@@ -39,6 +45,10 @@ struct ProductCellView: View {
                 Spacer()
             }
             AddButton(cost: Int(truncating: product.cost ?? 0), category: product.category ?? "", detailVM: detailVM)
+                .onAppear {
+                    detailVM.basketVM = basketVM
+                    detailVM.product = product
+                }
         }
     }
 }
@@ -92,4 +102,3 @@ struct AddButton: View {
         }
     }
 }
-

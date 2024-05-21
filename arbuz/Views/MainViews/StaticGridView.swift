@@ -10,9 +10,12 @@ import SwiftUI
 struct StaticGridView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(sortDescriptors: []) var product: FetchedResults<Product>
+    @EnvironmentObject var basketVM: BasketViewModel
+    @StateObject private var selectedProductsVM = SelectedProductsViewModel(products: [])
 
     
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
+    
     
     var body: some View {
         HStack {
@@ -21,21 +24,21 @@ struct StaticGridView: View {
             Spacer()
         }
         NavigationView {
-                VStack(spacing: 20) {
-                    ForEach(splitProducts(products: randomSixProducts), id: \.self) { rowProducts in
-                        HStack(spacing: 10) {
-                            ForEach(rowProducts, id: \.self) { product in
-                                ProductCellView(product: product)
-                            }
+            VStack(spacing: 20) {
+                ForEach(splitProducts(products: selectedProductsVM.selectedProducts), id: \.self) { rowProducts in
+                    HStack(spacing: 10) {
+                        ForEach(rowProducts, id: \.self) { product in
+                            ProductCellView(product: product)
                         }
                     }
                 }
             }
-    }
-    
-    private var randomSixProducts: [Product] {
-        let shuffledProducts = product.shuffled()
-        return Array(shuffledProducts.prefix(6))
+        }
+        .onAppear {
+            if selectedProductsVM.selectedProducts.isEmpty {
+                selectedProductsVM.selectedProducts = Array(product.shuffled().prefix(6))
+                }
+            }
     }
     
     private func splitProducts(products: [Product]) -> [[Product]] {

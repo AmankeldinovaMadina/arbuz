@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct BasketView: View {
-    var isAdded: Bool
+    @EnvironmentObject var basketVM: BasketViewModel
+    
     var body: some View {
-        if(isAdded) {
-            VStack {
-                Text("Basket is not empty")
-            }
+        if(basketVM.products.count > 0) {
+            BasketWithItemsView()
         } else {
             ZStack {
                 VStack(alignment: .center){
@@ -32,6 +31,6 @@ struct BasketView: View {
 }
 
 
-#Preview {
-    BasketView(isAdded: false)
-}
+//#Preview {
+//    BasketView(isAdded: false)
+//}

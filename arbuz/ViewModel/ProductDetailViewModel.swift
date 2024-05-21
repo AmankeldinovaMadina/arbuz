@@ -8,20 +8,18 @@
 import SwiftUI
 
 class ProductDetailViewModel: ObservableObject {
-//    @Published var product: Product
+
     @Published var quantity: Int = 0
+    var basketVM: BasketViewModel?
+    var product: Product?
     
-    func addQuantity(isAdd: Bool = true ) {
-        if(isAdd) {
+    func addQuantity(isAdd: Bool) {
+        if isAdd {
             quantity += 1
-            if(quantity > 99) {
-                quantity = 99
-            }
-        } else {
+            basketVM?.addProduct(product!)
+        } else if quantity > 0 {
             quantity -= 1
-            if(quantity < 0) {
-                quantity = 0
-            }
+            basketVM?.removeProduct(product!)
         }
     }
 }
