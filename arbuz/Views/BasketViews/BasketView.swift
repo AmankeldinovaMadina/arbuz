@@ -20,6 +20,7 @@ struct BasketView: View {
                     HStack{
                         Text("Корзина")
                             .font(.system(size: 16, weight: .semibold))
+                            .padding(.top)
                         Text("")
                     }
                     Spacer()

@@ -28,13 +28,13 @@ struct ProductCellView: View {
                     .frame(width: 100, height: 100)
                     .cornerRadius(16)
                 Button(action: {
-                    favoriteVM.toggleFavorite(for: product)
+                    favoriteVM.toggleFavorite(for: product.id ?? UUID())
                 }, label: {
-                    let isFavorite = favoriteVM.favoriteProducts.contains(product)
-                        Image(systemName: isFavorite ? "heart.fill" : "heart")
-                            .foregroundColor(Color.black)
-                    
+                    let isFavorite = favoriteVM.favoriteProductIDs.contains(product.id ?? UUID())
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
+                        .foregroundColor(Color.black)
                 })
+
                 
             }
             Text(product.productDescription ?? "Unknown Product")
