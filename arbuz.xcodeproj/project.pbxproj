@@ -29,6 +29,7 @@
 		4FE675C32BFCC566009DE761 /* BasketViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675C22BFCC566009DE761 /* BasketViewModel.swift */; };
 		4FE675C52BFCF070009DE761 /* SelectedProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675C42BFCF070009DE761 /* SelectedProductsViewModel.swift */; };
 		4FE675C72BFCFA63009DE761 /* BasketCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675C62BFCFA63009DE761 /* BasketCellView.swift */; };
+		4FE675C92BFD1A12009DE761 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE675C82BFD1A12009DE761 /* FavouriteViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		4FE675C22BFCC566009DE761 /* BasketViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketViewModel.swift; sourceTree = "<group>"; };
 		4FE675C42BFCF070009DE761 /* SelectedProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedProductsViewModel.swift; sourceTree = "<group>"; };
 		4FE675C62BFCFA63009DE761 /* BasketCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketCellView.swift; sourceTree = "<group>"; };
+		4FE675C82BFD1A12009DE761 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +89,8 @@
 		4F55B75B2BF77FDD00466165 /* arbuz */ = {
 			isa = PBXGroup;
 			children = (
-				4F5B26742BF9C91800B140F8 /* ViewModel */,
 				4F55B75C2BF77FDD00466165 /* arbuzApp.swift */,
+				4F5B26742BF9C91800B140F8 /* ViewModel */,
 				4F55B7702BF7816E00466165 /* Views */,
 				4F55B76F2BF7815D00466165 /* Models */,
 				4F55B7602BF77FDF00466165 /* Assets.xcassets */,
@@ -145,6 +147,7 @@
 				4F5B268A2BFB447900B140F8 /* ProductDetailViewModel.swift */,
 				4FE675C22BFCC566009DE761 /* BasketViewModel.swift */,
 				4FE675C42BFCF070009DE761 /* SelectedProductsViewModel.swift */,
+				4FE675C82BFD1A12009DE761 /* FavouriteViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				4FE675C32BFCC566009DE761 /* BasketViewModel.swift in Sources */,
 				4F5B267F2BF9CCA200B140F8 /* FavouriteView.swift in Sources */,
 				4F5B268D2BFB8D3400B140F8 /* EmptyBasketView.swift in Sources */,
+				4FE675C92BFD1A12009DE761 /* FavouriteViewModel.swift in Sources */,
 				4FE675C52BFCF070009DE761 /* SelectedProductsViewModel.swift in Sources */,
 				4F5B26722BF9251C00B140F8 /* ProductCellView.swift in Sources */,
 				4F5B26792BF9CA9B00B140F8 /* MainTabView.swift in Sources */,

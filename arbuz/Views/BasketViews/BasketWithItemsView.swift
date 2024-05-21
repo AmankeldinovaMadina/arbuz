@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BasketWithItemsView: View {
     @EnvironmentObject var basketVM: BasketViewModel
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     
     var body: some View {
            List {

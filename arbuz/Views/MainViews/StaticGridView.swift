@@ -12,7 +12,7 @@ struct StaticGridView: View {
     @FetchRequest(sortDescriptors: []) var product: FetchedResults<Product>
     @EnvironmentObject var basketVM: BasketViewModel
     @StateObject private var selectedProductsVM = SelectedProductsViewModel(products: [])
-
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     

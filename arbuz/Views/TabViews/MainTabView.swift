@@ -11,6 +11,7 @@ struct MainTabView: View {
     @StateObject var mainVM = MainViewModel.shared
     @Environment(\.managedObjectContext) var managedObjectContext
     @StateObject var basketVM = BasketViewModel()
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     @FetchRequest(sortDescriptors: []) var product: FetchedResults<Product>
     
     var body: some View {
@@ -20,12 +21,15 @@ struct MainTabView: View {
                     .tag(0)
                     .environment(\.managedObjectContext, managedObjectContext)
                     .environmentObject(basketVM)
+                    .environmentObject(favoriteVM)
                 BasketView()
                     .tag(1)
                     .environmentObject(basketVM)
+                    .environmentObject(favoriteVM)
                 FavouriteView()
                     .tag(2)
-                    .environmentObject(basketVM) 
+                    .environmentObject(basketVM)
+                    .environmentObject(favoriteVM)
             }
             .onAppear {
                 UIScrollView.appearance().isScrollEnabled = false

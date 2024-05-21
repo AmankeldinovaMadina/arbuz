@@ -12,6 +12,7 @@ struct ProductCellView: View {
     
     @EnvironmentObject var basketVM: BasketViewModel
     @StateObject var detailVM: ProductDetailViewModel
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     
     init(product: Product) {
         self.product = product
@@ -20,12 +21,22 @@ struct ProductCellView: View {
     
     var body: some View {
         VStack {
-            Image(product.image ?? "")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-                .cornerRadius(16)
-            
+            ZStack(alignment: .topTrailing){
+                Image(product.image ?? "")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(16)
+                Button(action: {
+                    favoriteVM.toggleFavorite(for: product)
+                }, label: {
+                    let isFavorite = favoriteVM.favoriteProducts.contains(product)
+                        Image(systemName: isFavorite ? "heart.fill" : "heart")
+                            .foregroundColor(Color.black)
+                    
+                })
+                
+            }
             Text(product.productDescription ?? "Unknown Product")
                 .padding(.top, 5)
                 .font(.system(size: 12))

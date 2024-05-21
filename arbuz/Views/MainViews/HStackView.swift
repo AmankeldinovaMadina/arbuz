@@ -15,7 +15,7 @@ struct HStackView: View {
         sortDescriptors: [],
         predicate: NSPredicate(format: "category == %@", "drinks")
     ) var product: FetchedResults<Product>
-    
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     var body: some View {
         HStack {
             Text("Drinks")

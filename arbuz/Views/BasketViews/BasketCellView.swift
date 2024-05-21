@@ -12,6 +12,7 @@ struct BasketCellView: View {
     
     @EnvironmentObject var basketVM: BasketViewModel
     @StateObject var detailVM: ProductDetailViewModel
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     
     init(product: Product) {
         self.product = product
@@ -20,11 +21,14 @@ struct BasketCellView: View {
     
     var body: some View {
         HStack {
-            Image(product.image ?? "")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 100, height: 100)
-                .cornerRadius(16)
+            ZStack (alignment: .topTrailing) {
+                Image(product.image ?? "")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(16)
+                    
+            }
             
             VStack(alignment: .leading) {
                 Text(product.name ?? "Unknown Product")

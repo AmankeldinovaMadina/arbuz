@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @StateObject var mainVM = MainViewModel.shared
     @EnvironmentObject var basketVM: BasketViewModel
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     
     var body: some View {
         ZStack {

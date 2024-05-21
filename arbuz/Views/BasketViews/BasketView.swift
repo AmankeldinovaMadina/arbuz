@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BasketView: View {
     @EnvironmentObject var basketVM: BasketViewModel
+    @EnvironmentObject var favoriteVM: FavouriteViewModel
     
     var body: some View {
         if(basketVM.products.count > 0) {
@@ -30,7 +31,3 @@ struct BasketView: View {
     }
 }
 
-
-//#Preview {
-//    BasketView(isAdded: false)
-//}
