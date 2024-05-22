@@ -49,9 +49,14 @@ struct ProductCellView: View {
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundColor(Color.gray)
                 } else {
-                    Text("\(Int(truncating: product.cost ?? 0)) \(product.category == "drinks" ? "тг/шт" : "тг/кг")")
-                        .font(.system(size: 12, weight: .semibold))
-                        .foregroundColor(Color.gray)
+                    HStack {
+                        Text("\(Int(truncating: product.cost ?? 0)) \(product.category == "drinks" ? "тг/шт" : "тг/кг")")
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(Color.gray)
+
+
+                    }
+
                 }
                 Spacer()
             }

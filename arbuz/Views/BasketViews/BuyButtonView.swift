@@ -21,29 +21,36 @@ struct BuyButtonView: View {
     }
     
     var body: some View {
-        Button(action: {
-            isLoading = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                isLoading = false
-                isThanksViewVisible = true
+        VStack {
+            if(totalSum < 8000) {
+                Text("До бесплатной доставки \(8000 - totalSum) тг")
+                    .font(.subheadline)
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                basketVM.clearBasket()
-                
-            }
-            
-        }, label: {
-            ZStack {
-                Rectangle()
-                    .fill(Color.green)
-                    .frame(height: 50)
-                    .cornerRadius(16)
+            Button(action: {
+                isLoading = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    isLoading = false
+                    isThanksViewVisible = true
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    basketVM.clearBasket()
                     
-                Text("Total: \(Double(truncating: totalSum as NSNumber), specifier: "%.2f") тг")
-                    .foregroundColor(.white)
-                    .bold()
-            }
-        })
+                }
+                
+            }, label: {
+                ZStack {
+                    Rectangle()
+                        .fill(Color.green)
+                        .frame(height: 50)
+                        .cornerRadius(16)
+                        
+                    Text("Total: \(Double(truncating: totalSum as NSNumber), specifier: "%.2f") тг")
+                        .foregroundColor(.white)
+                        .bold()
+                }
+            })
+        }
+
         .padding(.trailing)
         .sheet(isPresented: $isThanksViewVisible) {
             ThanksView()

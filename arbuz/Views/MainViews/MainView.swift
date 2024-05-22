@@ -41,7 +41,10 @@ struct MainView: View {
                         .cornerRadius(12)
                     
                     StaticGridView()
-                    HStackView(title: "Drinks", category: Category.drinks)
+                    HStackView(title: "Соки", category: Category.drinks)
+                    HStackView(title: "Фрукты", category: Category.fruits)
+                    HStackView(title: "Хлеб и выпечки", category: Category.breadAndPastries)
+                    
 
                 }
                 .padding(.horizontal)

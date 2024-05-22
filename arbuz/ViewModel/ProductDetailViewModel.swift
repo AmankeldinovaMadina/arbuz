@@ -22,5 +22,7 @@ class ProductDetailViewModel: ObservableObject {
             basketVM?.removeProduct(product!)
         }
     }
+    
+
 }
 

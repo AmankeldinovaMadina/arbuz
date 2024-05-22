@@ -33,8 +33,7 @@ struct FavouriteView: View {
                         }
                     }
 
-
-                    }
+                }
                 .padding()
             }
             

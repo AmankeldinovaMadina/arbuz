@@ -24,7 +24,7 @@ class DataController: ObservableObject {
     }
     
     
-    func addProduct(name: String, cost: Decimal, image: String, category: String, productDescription: String?, context: NSManagedObjectContext, isFav: Bool?, minAmount: Decimal = 1 ){
+    func addProduct(name: String, cost: Decimal, image: String, category: String, productDescription: String?, context: NSManagedObjectContext, isFav: Bool?, minAmount: Double = 1.0 ){
         let product = Product(context: context)
         product.id = UUID()
         product.name = name
@@ -33,7 +33,7 @@ class DataController: ObservableObject {
         product.category = category
         product.productDescription = productDescription
         product.isFav = isFav ?? false
-        product.minAmount = (minAmount) as NSDecimalNumber
+        product.minAmount = Double((minAmount) as! NSDecimalNumber)
         
         save(context: context)
     }
